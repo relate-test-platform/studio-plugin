@@ -8,7 +8,7 @@
     {
       "name": "studio",
       "source": "./studio",
-      "description": "Start, open and manage Relate Studio prototype projects from Claude, and add screens and flows the studio way."
+      "description": "Start, open and manage Relate Studio prototype projects from Claude, update previews, publish client versions, export handoffs, and add screens and flows the studio way."
     }
   ]
 }
