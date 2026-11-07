@@ -1,0 +1,6 @@
+{
+  "name": "studio",
+  "version": "0.1.0",
+  "description": "Start, open and manage Relate Studio prototype projects from Claude, and add screens and flows the studio way.",
+  "author": { "name": "Relate" }
+}

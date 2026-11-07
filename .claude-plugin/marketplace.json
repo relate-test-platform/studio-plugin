@@ -1,0 +1,14 @@
+{
+  "name": "relate-studio",
+  "description": "Claude plugins for Relate Studio prototype work.",
+  "owner": {
+    "name": "Relate"
+  },
+  "plugins": [
+    {
+      "name": "studio",
+      "source": "./studio",
+      "description": "Start, open and manage Relate Studio prototype projects from Claude, and add screens and flows the studio way."
+    }
+  ]
+}
