@@ -45,4 +45,4 @@ Team previews open from the hub with your Designer Hub sign-in; there's no separ
 | `/studio:handoff [project] [version]` | Packages a published version for developers |
 | `/studio:list`, `/studio:rename`, `/studio:archive`, `/studio:restore` | Lists, renames, archives and restores projects |
 
-To use a hub running on a Mac instead, set `STUDIO_HUB_URL` to its address, for example `http://127.0.0.1:4310`.
+To work against a hub running on your Mac, install the plugin from a local checkout and change the address in `studio/.mcp.json`.

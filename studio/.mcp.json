@@ -2,7 +2,7 @@
   "mcpServers": {
     "studio": {
       "type": "http",
-      "url": "${STUDIO_HUB_URL:-https://relate-designer-hub.vercel.app}/api/mcp"
+      "url": "https://relate-designer-hub.vercel.app/api/mcp"
     }
   }
 }
