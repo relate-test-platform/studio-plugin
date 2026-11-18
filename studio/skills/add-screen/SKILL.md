@@ -8,6 +8,12 @@ argument-hint: "<what the screen is for>"
 
 The studio's review tool reads every screen from a few registries. A screen missing from one of them breaks comments, the flow map or the contract tests, so update all of them. Read the project's `CLAUDE.md` first: it's the source of truth, and the project may have grown its own conventions.
 
+## Before you start
+
+- Call the studio `get_brand` tool for the project and design with its colours, typefaces, logos and guidelines.
+- Call `list_files` for the project and open the references that match this screen with `read_file`, such as copy, specs or exported frames.
+- When the user wants something you made kept for the team, such as copy or an exported frame, save it to the project with `add_file`.
+
 ## Steps
 
 1. **Name it.** Pick a short, stable ID that matches the design file's frame name: `S06` for a screen, `S06d` for a dialog over `S06`. Add it to `TITLES` in `src/proto/flows.ts`. A dialog or sheet also goes in `OVERLAYS`, pointing at the screen it opens over.

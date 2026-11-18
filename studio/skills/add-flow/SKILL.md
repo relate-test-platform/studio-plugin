@@ -8,6 +8,10 @@ argument-hint: "<the journey or situation>"
 
 A **flow** is a journey with its own map in the review tool, such as "F2 · Changing your plan". A **scenario** is a starting point inside a flow with its own mock data, such as "Plan already cancelled". Reviewers pick both by name in the review tool, so name them the way people describe the situation. Read the project's `CLAUDE.md` first.
 
+## Before you start
+
+Call the studio `list_files` tool for the project and read the specs, copy or journey notes the team saved for this flow with `read_file`. Call `get_brand` before you build new screens.
+
 ## A scenario in an existing flow
 
 1. Add `{ id, flowId, name, note, start }` to that flow's `scenarios` in `FLOWS` (`src/proto/flows.ts`). `name` is the situation; `note` says what's already true.

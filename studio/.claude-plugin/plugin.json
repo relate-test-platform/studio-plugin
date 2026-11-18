@@ -1,6 +1,6 @@
 {
   "name": "studio",
-  "version": "0.2.0",
-  "description": "Start, open and manage Relate Studio prototype projects from Claude, update previews, publish client versions, export handoffs, and add screens and flows the studio way.",
+  "version": "0.3.0",
+  "description": "Work on Relate Studio projects from Claude: start and open prototypes, design with the project's brand and files, save new files to the hub, update previews, publish client versions and package handoffs.",
   "author": { "name": "Relate" }
 }
