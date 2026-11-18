@@ -9,8 +9,10 @@ The `studio` plugin connects Claude Code to the Relate Designer Hub. With it, Cl
 
 ## Install
 
+The repository is private, so your GitHub account needs access to the relate-test-platform organisation.
+
 ```bash
-claude plugin marketplace add <this repository>
+claude plugin marketplace add relate-test-platform/studio-plugin
 claude plugin install studio@relate-studio
 ```
 
