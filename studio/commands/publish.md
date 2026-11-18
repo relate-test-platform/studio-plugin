@@ -14,4 +14,4 @@ Publish a client version with the studio `publish_version` tool.
 6. When it's live, reply with the version number, the version's own link and the client link, which now opens this version. Clients see it in the Client Hub once someone approves it in the hub: the project's Client access, then Prototype, then Approve. They open it there with their own Client Hub login.
 7. If it failed, show the error and suggest trying again from the hub or with this command.
 
-If the studio tools aren't available or answer that a token is missing or invalid, Claude isn't connected to the hub. Ask the user to open their Designer Hub profile, create an API token under API tokens, add the two lines it shows to the `env` section of `~/.claude/settings.json`, and restart Claude.
+If the studio tools aren't available, or answer that Claude Code isn't connected, run `/studio:setup`: it connects Claude Code to the Designer Hub through the browser.

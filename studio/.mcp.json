@@ -2,10 +2,7 @@
   "mcpServers": {
     "studio": {
       "type": "http",
-      "url": "${STUDIO_HUB_URL:-https://relate-designer-hub.vercel.app}/api/mcp",
-      "headers": {
-        "Authorization": "Bearer ${STUDIO_HUB_TOKEN:-}"
-      }
+      "url": "${STUDIO_HUB_URL:-https://relate-designer-hub.vercel.app}/api/mcp"
     }
   }
 }

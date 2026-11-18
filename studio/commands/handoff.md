@@ -15,4 +15,4 @@ Export a developer handoff of a published version.
    - Delete `node_modules` and `dist` from the output folder. Check that no file contains a password, token or key, then zip the folder as `<project slug>-v<number>-handoff.zip`.
 4. Reply with the ZIP's path and what's inside: the product prototype without the review tool, `HANDOFF.md` with how to run it, and an empty `.env.example`.
 
-If the studio tools aren't available or answer that a token is missing or invalid, Claude isn't connected to the hub. Ask the user to open their Designer Hub profile, create an API token under API tokens, add the two lines it shows to the `env` section of `~/.claude/settings.json`, and restart Claude.
+If the studio tools aren't available, or answer that Claude Code isn't connected, run `/studio:setup`: it connects Claude Code to the Designer Hub through the browser.

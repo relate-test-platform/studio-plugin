@@ -1,47 +1,48 @@
-# Relate Studio plugin for Claude
+# Relate Studio plugin for Claude Code
 
-The `studio` plugin connects Claude Code to the Relate Designer Hub. With it, Claude can:
+The `studio` plugin connects Claude Code to the Relate Designer Hub, so you can open the projects you're assigned to, design with their brand and files, and update their team previews.
 
-- start a prototype project from the studio template, open it and clone its code;
-- design with the project's brand and the files the studio keeps, and save new files back to the hub;
-- update the team preview, publish client versions and package handoffs for developers;
-- add screens, dialogs, flows and scenarios the way the template expects.
+## Set up (once per computer)
 
-## Install
-
-The repository is private, so your GitHub account needs access to the relate-test-platform organisation.
+You need [Claude Code](https://claude.ai/download) and the [GitHub CLI](https://cli.github.com) (`brew install gh` on a Mac). Then paste this in Terminal:
 
 ```bash
-claude plugin marketplace add relate-test-platform/studio-plugin
-claude plugin install studio@relate-studio
+claude plugin marketplace add relate-test-platform/studio-plugin; claude plugin install studio@relate-studio; claude "/studio:setup"
 ```
 
-## Connect it to the hub
+`/studio:setup` walks you through the rest and skips what's already done:
 
-1. Open your profile in the Designer Hub and create a token under API tokens.
-2. Add the two lines the hub shows to the `env` section of `~/.claude/settings.json`:
+1. **Designer Hub.** If Claude Code isn't connected yet, type `/mcp`, choose **studio** and **Authenticate**. Your browser opens the hub; click **Connect**. No tokens to copy.
+2. **GitHub.** If you aren't signed in, type `! gh auth login --web --git-protocol https` and sign in with your own GitHub account in the browser.
+3. **Access.** It links your GitHub account to the hub, and accepts the studio's invitations to the repositories of the projects you're assigned to. Access covers those projects only.
 
-   ```json
-   {
-     "env": {
-       "STUDIO_HUB_URL": "https://relate-designer-hub.vercel.app",
-       "STUDIO_HUB_TOKEN": "<your token>"
-     }
-   }
-   ```
+Run `/studio:setup` again whenever something seems off or a new project is assigned. It's safe to repeat.
 
-3. Restart Claude. `/studio:list` shows the studio's projects when it's connected.
+## Work on a project
 
-The token acts as you, with your hub level, until you revoke it on your profile. To use a hub running on your Mac, set `STUDIO_HUB_URL` to its address, for example `http://127.0.0.1:4310`.
+- `/studio:open <project>` finds or clones the code into `~/Studio/<repository>`. It updates it only when you have no local changes, and never overwrites your work. The project page in the hub has the same thing as **Open in Claude Code**.
+- Ask Claude for screens and flows in plain words. It designs with the project's brand (`get_brand`) and the files the studio keeps (`list_files`).
+
+| Step | What it does | Who sees it |
+|---|---|---|
+| Save | Files change on your computer | Only you |
+| Commit | Records the change locally with a short message | Only you |
+| Send back (`git push`) | Uploads your commits to the project's repository | The team, in the code |
+| `/studio:preview` | The hub rebuilds the team preview from the latest pushed code | The team, behind Designer Hub sign-in |
+| `/studio:publish` | Publishes a numbered version for the client | Clients, once it's approved in the hub |
+
+Team previews open from the hub with your Designer Hub sign-in; there's no separate preview password. You never need your own Vercel account: the hub builds previews.
 
 ## Commands
 
 | Command | What it does |
 |---|---|
-| `/studio:new <name> [for <client>]` | Starts a project: a private GitHub repository and a team preview |
-| `/studio:open <name>` | Opens a project: clones it if needed and sums up its flows, brand and files |
-| `/studio:preview [name]` | Pushes the latest changes and updates the team preview |
-| `/studio:publish [name]: <what changed>` | Publishes the next client version |
-| `/studio:handoff [name] [version]` | Packages a published version as a ZIP for developers |
-| `/studio:list` | Lists projects |
-| `/studio:rename`, `/studio:archive`, `/studio:restore` | Renames, archives and restores a project |
+| `/studio:setup` | Connects this computer to the hub and GitHub, and checks your project access |
+| `/studio:open <project>` | Opens a project from its checkout in `~/Studio` |
+| `/studio:preview [project]` | Sends your committed changes and updates the team preview |
+| `/studio:publish [project]: <what changed>` | Publishes the next client version |
+| `/studio:new <name> [for <client>]` | Starts a new prototype project |
+| `/studio:handoff [project] [version]` | Packages a published version for developers |
+| `/studio:list`, `/studio:rename`, `/studio:archive`, `/studio:restore` | Lists, renames, archives and restores projects |
+
+To use a hub running on a Mac instead, set `STUDIO_HUB_URL` to its address, for example `http://127.0.0.1:4310`.

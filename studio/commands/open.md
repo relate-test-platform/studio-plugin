@@ -1,13 +1,18 @@
 ---
 description: Open a studio project to work on it
 argument-hint: "<project name>"
-allowed-tools: mcp__plugin_studio_studio__get_project, mcp__plugin_studio_studio__list_projects, mcp__plugin_studio_studio__get_brand, mcp__plugin_studio_studio__list_files
+allowed-tools: mcp__plugin_studio_studio__get_project, mcp__plugin_studio_studio__list_projects, mcp__plugin_studio_studio__whoami, mcp__plugin_studio_studio__get_brand, mcp__plugin_studio_studio__list_files, Bash(gh repo clone:*), Bash(git -C:*), Bash(mkdir -p ~/Studio)
 ---
 
-Find the project named in "$ARGUMENTS" with the studio `get_project` tool. If no name was given, call `list_projects` and ask which one.
+Open the project named in "$ARGUMENTS". If no name was given, call `whoami` and use the project assigned to the user, or ask which one when there are several.
 
-- If this session is already in the project's code (its `studio.json` has the project's slug), run `git pull` when it's a clone, read `CLAUDE.md` and `studio.json`, and call `get_brand` and `list_files` for the project. Sum up in a few lines: the flows and screens in `src/proto/flows.ts`, the brand, and the files the studio keeps. Then ask what to work on.
-- If the project has a `folder` (the hub runs on this Mac), show the preview link and the command that starts Claude there: `cd "<folder>" && claude`. Offer to carry on from this session with full paths instead.
-- Otherwise, show the preview link and offer to run the project's `clone` command in the current folder, then give `cd <repository name> && claude`. If the code is already cloned nearby, use that copy and `git pull` instead.
+1. Call `get_project` for its repository (`code`) and, on a hub running on a Mac, its `folder`.
+2. Find the code on this computer.
+   - If this session is already in the project (`studio.json` has its slug), use it.
+   - On a Mac hub with a `folder`, use that folder.
+   - Otherwise use `~/Studio/<repository name>`. If it isn't there, run `mkdir -p ~/Studio` and `gh repo clone <owner>/<repository> ~/Studio/<repository name>`. If cloning says the repository doesn't exist, the user doesn't have access yet: tell them to run `/studio:setup`.
+3. Bring it up to date safely. Run `git -C <folder> status --porcelain`. Only when it's empty, run `git -C <folder> pull --ff-only`. Never reset, stash, discard or overwrite local changes. If there are changes, leave them and say so.
+4. Read the project's `CLAUDE.md` and `studio.json`. Call `get_brand` and `list_files`. In a few lines, sum up its screens and flows, its brand and the files the studio keeps.
+5. If this session isn't running in the project's folder, tell the user to start Claude there for the best results: `cd <folder> && claude`. Otherwise ask what to work on.
 
-If the studio tools aren't available or answer that a token is missing or invalid, Claude isn't connected to the hub. Ask the user to open their Designer Hub profile, create an API token under API tokens, add the two lines it shows to the `env` section of `~/.claude/settings.json`, and restart Claude.
+If the studio tools aren't available, or answer that Claude Code isn't connected, run `/studio:setup`: it connects Claude Code to the Designer Hub through the browser.

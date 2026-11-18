@@ -8,4 +8,4 @@ List Relate Studio projects with the studio `list_projects` tool. Use the shelf 
 
 Reply with a compact table: name, client, status and preview link. Mention a local folder only for the project this session is working in.
 
-If the studio tools aren't available or answer that a token is missing or invalid, Claude isn't connected to the hub. Ask the user to open their Designer Hub profile, create an API token under API tokens, add the two lines it shows to the `env` section of `~/.claude/settings.json`, and restart Claude.
+If the studio tools aren't available, or answer that Claude Code isn't connected, run `/studio:setup`: it connects Claude Code to the Designer Hub through the browser.
