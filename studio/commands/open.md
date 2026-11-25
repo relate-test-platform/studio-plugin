@@ -15,6 +15,7 @@ Open the project named in "$ARGUMENTS". If no name was given, call `whoami` and 
 4. Pick the prototype. `get_project` lists them with their names, branches and who started them. If "$ARGUMENTS" names one, or the user asks for a teammate's prototype, switch to its branch with `git -C <folder> switch <branch>` (only when there are no local changes). Say which prototype the session is on.
    - Editing a prototype changes it for everyone who works on it, and teammates' pushes arrive with `git pull`.
    - To try an alternative without changing it, call `create_prototype` with a name and the prototype to copy, then `git -C <folder> fetch --quiet origin` and `git -C <folder> switch <new branch>`.
+   - To continue from a published version, use `/studio:continue <project> v<number>` instead: it starts a separate prototype at that version's exact commit.
 5. Read the project's `CLAUDE.md` and `studio.json`. Call `get_brand` and `list_files`. In a few lines, sum up its screens and flows, its brand and the files the studio keeps.
 6. If this session isn't running in the project's folder, tell the user to start Claude there for the best results: `cd <folder> && claude`. Otherwise ask what to work on.
 

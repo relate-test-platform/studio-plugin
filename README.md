@@ -21,6 +21,7 @@ Run `/studio:setup` again whenever something seems off or a new project is assig
 ## Work on a project
 
 - `/studio:open <project>` finds or clones the code into `~/Studio/<repository>`. It updates it only when you have no local changes, and never overwrites your work. The project page in the hub has the same thing as **Open in Claude Code**.
+- `/studio:continue <project> v<number> [product|website]` continues from one published version, including a teammate's. It reports the project, part, source version and its publisher, then starts a separate prototype at that version's exact commit, so the original stays as it was. In the canvas or the hub's Version history, **Copy command for Claude** writes this command for the version you're looking at; paste it into Claude Code.
 - Ask Claude for screens and flows in plain words. It designs with the project's brand (`get_brand`) and the files the studio keeps (`list_files`).
 
 | Step | What it does | Who sees it |
@@ -39,6 +40,7 @@ Team previews open from the hub with your Designer Hub sign-in; there's no separ
 |---|---|
 | `/studio:setup` | Connects this computer to the hub and GitHub, and checks your project access |
 | `/studio:open <project>` | Opens a project from its checkout in `~/Studio` |
+| `/studio:continue <project> <v<number> \| prototype> [product\|website]` | Continues from one exact version (in a separate prototype) or prototype |
 | `/studio:preview [project]` | Sends your committed changes and updates the team preview |
 | `/studio:publish [project]: <what changed>` | Publishes the next client version |
 | `/studio:new <name> [for <client>]` | Starts a new prototype project |

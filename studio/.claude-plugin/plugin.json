@@ -1,7 +1,7 @@
 {
   "name": "studio",
-  "version": "0.5.0",
-  "description": "Work on Relate Studio projects from Claude: start and open prototypes, design with the project's brand and files, save new files to the hub, update previews, publish client versions and package handoffs.",
+  "version": "0.6.0",
+  "description": "Work on Relate Studio projects from Claude: start and open prototypes, continue from any published version, design with the project's brand and files, save new files to the hub, update previews, publish client versions and package handoffs.",
   "author": {
     "name": "Relate"
   }
